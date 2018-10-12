@@ -1,3 +1,23 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+        resources :users, only: [:show, :create, :index]
+        resources :trips, only: [:show, :create, :index, :update]
+        resources :physical_ratings, only: [:show, :create, :index, :update]
+        resources :days, only: [:show, :create, :index, :update]
+        resources :accommodations, only: [:show, :create, :index, :update]
+
+        get "/users/:id/trips", to: "users#show_trips"
+        get "/trips/:id/days", to: "trips#show_days"
+
+
+        post '/signin', to: 'users#signin'
+        get '/validate', to: 'users#validate'
+    end
+  end
+  # patch "/trips/:id", to "trips#update"
+  # patch "/days/:id", to "days#update"
+  # patch "/physical_ratings/:id", to "physical_ratings#update"
+  # patch "/accommodations/:id", to "accommodations#update"
+
 end

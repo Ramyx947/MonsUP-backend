@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  start_point: MyString
+  end_point: MyString
+  distance: MyString
+  notes: MyString
+  trip: one
+
+two:
+  title: MyString
+  start_point: MyString
+  end_point: MyString
+  distance: MyString
+  notes: MyString
+  trip: two
