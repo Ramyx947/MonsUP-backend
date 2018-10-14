@@ -1,3 +1,3 @@
 class PhysicalRatingSerializer < ActiveModel::Serializer
-  attributes :id, :difficulty
+  attributes :difficulty
 end

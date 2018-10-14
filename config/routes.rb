@@ -9,10 +9,16 @@ Rails.application.routes.draw do
 
         get "/users/:id/trips", to: "users#show_trips"
         get "/trips/:id/days", to: "trips#show_days"
-
+        # get "/users/:id/trips/:id/days", to "users#show_trip_days"
 
         post '/signin', to: 'users#signin'
         get '/validate', to: 'users#validate'
+
+        post '/login', to: 'users#login'
+
+      
+        post '/trips/:id/days', to: 'days#create'
+        
     end
   end
   # patch "/trips/:id", to "trips#update"

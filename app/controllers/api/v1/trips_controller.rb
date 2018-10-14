@@ -1,10 +1,26 @@
 class Api::V1::TripsController < ApplicationController
   
   def show
-    @trip = Trip.find(params[:id])
-    render json: @trip
+    trip = Trip.find(params[:id])
+    render json: {
+      trip_details: trip,
+      hikers: trip.trip_all_hikers
+    }
   end
 
+
+  def days
+    trip = Trip.find(params[:id])
+      render json: trip.days.map{|day|
+        {
+          id: day.id,
+          date: day.date,
+          accomodation: day.daily_accommodation,
+          notes: day.notes
+          
+        }
+  }
+end
   def create
     @trip = Trip.new(
       user_id: params[:user_id],
