@@ -2,10 +2,7 @@ class Api::V1::TripsController < ApplicationController
   
   def show
     trip = Trip.find(params[:id])
-    render json: {
-      trip_details: trip,
-      hikers: trip.trip_all_hikers
-    }
+    render json: trip
   end
 
 
@@ -14,23 +11,28 @@ class Api::V1::TripsController < ApplicationController
       render json: trip.days.map{|day|
         {
           id: day.id,
-          date: day.date,
-          accomodation: day.daily_accommodation,
-          notes: day.notes
-          
+          title: day.title,
+          start_point: day.start_point,
+          end_point: day.end_point,
+          distance: day.distance,
+          notes: day.notes,
+          accommodation_type: day.accommodation_type,
+          name: day.name,
+          address: day.address
         }
   }
 end
   def create
     @trip = Trip.new(
-      user_id: params[:user_id],
+      user: User.find(params[:user_id]),
       title: params[:title],
       start_date: params[:start_date],
       end_date: params[:end_date],
       number_days: params[:number_days],
       country: params[:country],
       city: params[:city],
-      category: params[:category]
+      category: params[:category],
+      difficulty: params[:difficulty]
     )
     if @trip.save
       render json: @trip
@@ -62,5 +64,10 @@ end
     @trip = Trip.find(params[:id])
     render json: @trip.days
   end
+  def show_ratings
+    @trip = Trip.find(params[:id])
+    render json: @trip.physical_ratings
+  end
+  
   
 end

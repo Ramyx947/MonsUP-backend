@@ -10,15 +10,10 @@ class Api::V1::DaysController < ApplicationController
       start_point: day.start_point,
       end_point: day.end_point,
       distance: day.distance,
-      accommodations: day.accommodations.map{|accommodation| {
-        id: accommodation.id,
-        day_id: accommodation.day_id,
-        accommodation_type: accommodation.accommodation_type
-        name: accommodation.name,
-        address: accommodation.address,
-        nights: accommodation.nights
-      }},
       notes: day.notes
+      accommodation_type: day.accommodation_type,
+      name: day.name,
+      address: day.address
     }
   end
 
@@ -31,7 +26,10 @@ class Api::V1::DaysController < ApplicationController
       start_point: params[:start_point],
       end_point: params[:end_point],
       distance: params[:distance],
-      note: params[:note]
+      note: params[:note],
+      accommodation_type: params[:accommodation_type],
+      name: params[:name],
+      address: params[:address]
     )
     if @day.save
       render json: @day
@@ -52,7 +50,10 @@ class Api::V1::DaysController < ApplicationController
       start_point: params[:start_point],
       end_point: params[:end_point],
       distance: params[:distance],
-      note: params[:note]
+      note: params[:note],
+      accommodation_type: params[:accommodation_type],
+      name: params[:name],
+      address: params[:address]
     )
      render json: @day
   end

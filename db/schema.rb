@@ -10,21 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_184859) do
+ActiveRecord::Schema.define(version: 2018_10_10_184818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "accommodations", force: :cascade do |t|
-    t.string "accommodation_type"
-    t.string "name"
-    t.string "address"
-    t.integer "nights"
-    t.bigint "day_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_accommodations_on_day_id"
-  end
 
   create_table "days", force: :cascade do |t|
     t.string "title"
@@ -32,18 +21,13 @@ ActiveRecord::Schema.define(version: 2018_10_10_184859) do
     t.string "end_point"
     t.string "distance"
     t.string "notes"
+    t.string "accommodation_type"
+    t.string "name"
+    t.string "address"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_days_on_trip_id"
-  end
-
-  create_table "physical_ratings", force: :cascade do |t|
-    t.string "difficulty"
-    t.bigint "trip_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_physical_ratings_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -54,6 +38,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_184859) do
     t.string "country"
     t.string "city"
     t.string "category"
+    t.string "difficulty"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

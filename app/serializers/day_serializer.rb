@@ -1,3 +1,3 @@
 class DaySerializer < ActiveModel::Serializer
-  attributes :title, :start_point, :end_point, :distance, :notes, :trip_id
+  attributes :id, :title, :start_point, :end_point, :distance, :notes, :accommodation_type, :name, :address, :trip_id
 end

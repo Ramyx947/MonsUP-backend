@@ -8,6 +8,7 @@ class CreateTrips < ActiveRecord::Migration[5.2]
       t.string :country
       t.string :city
       t.string :category
+      t.string :difficulty
       t.belongs_to :user, index: true
 
       t.timestamps
