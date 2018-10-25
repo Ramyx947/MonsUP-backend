@@ -21,9 +21,6 @@ ActiveRecord::Schema.define(version: 2018_10_10_184818) do
     t.string "end_point"
     t.string "distance"
     t.string "notes"
-    t.string "accommodation_type"
-    t.string "name"
-    t.string "address"
     t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,6 +36,9 @@ ActiveRecord::Schema.define(version: 2018_10_10_184818) do
     t.string "city"
     t.string "category"
     t.string "difficulty"
+    t.string "accommodation_type"
+    t.string "name"
+    t.string "address"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
